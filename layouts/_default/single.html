@@ -1,0 +1,19 @@
+{{ partial "header.html" . }}
+
+<main class="body">
+    <div class="row">
+        <article class="post-container">
+            {{ partial "page-header.html" . }}
+            {{ partial "page-content.html" . }}
+            {{ partial "post-footer.html" . }}
+        </article>
+        <section class="sidebar">
+            <aside>
+                {{ partial "terms.html" . }}
+            </aside>
+        </section>
+    </div>
+    
+</main>
+
+{{ partial "footer.html" . }}

@@ -1,0 +1,7 @@
+<div class="post-content">
+    {{ with .Params.Image }}
+        <img class="post-featured-image" src="{{ .Image }}">
+    {{ end }}
+
+    {{ .Content }}
+</div>

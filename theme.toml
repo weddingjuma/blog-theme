@@ -1,0 +1,11 @@
+name = "openemr"
+license = "proprietary"
+description = "OpenEMR Branded Blog Theme with help from the ghostwriter theme."
+
+[author]
+    name = "Robert Down"
+    homepage = "http://robertdown.me"
+
+[original]
+    author = "Juraj Bubniak"
+    homepage = "https://github.com/jbub"
