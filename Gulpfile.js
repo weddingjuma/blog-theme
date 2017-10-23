@@ -26,8 +26,8 @@ gulp.task('sass', function () {
   return gulp.src('./src/sass/**/*.scss')
     .pipe(sass({
         includePaths: sassIncludePaths,
-        importer: tildeImporter
-        // outputStyle: "compressed"
+        importer: tildeImporter,
+        outputStyle: "compressed"
     }).on('error', sass.logError))
     .pipe(gulp.dest(outputPath + '/css/'));
 });
