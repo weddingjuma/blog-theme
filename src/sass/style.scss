@@ -4,7 +4,7 @@
 
 @import "imports";
 @import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,700');
-
+@import "aleo.css";
 
 nav.main-header {
     @extend .navbar;
@@ -224,7 +224,7 @@ img.featured {
 
     font-size: 18px;
 
-    img {
+    img:not(.floating) {
         @extend .img-fluid;
     }
 
