@@ -1,5 +1,36 @@
-{{ range .Site.Menus.main.ByWeight }}
-    <li class="site-nav-item">
-        <a title="{{ .Name }}" href="{{ .URL }}">{{ .Name }}</a>
-    </li>
-{{ end }}
+<nav class="main-header">
+    <div class="container">
+        {{ if not .IsHome }}
+        <a class="navbar-brand" href="{{ .Site.BaseURL }}">
+            <img src="{{ .Site.BaseURL }}img/main-logo.svg" alt="OpenEMR" height="35">
+        </a>
+        {{ end }}
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
+            aria-expanded="false" aria-label="Toggle navigation">
+            <i class="fa fa-bars fa-inverse fa-lg"></i>
+        </button>
+
+        <div id="navbarSupportedContent">
+            <ul>
+                 {{ range .Site.Menus.main.ByWeight }}
+                <li class="site-nav-item">
+                    <a title="{{ .Name }}" href="{{ .URL }}">
+                        {{ .Name }}
+                    </a>
+                </li>
+                {{ end }} {{ with .Site.Params.twitter }}
+                <li>
+                    <a href="{{ . }}" class="nav-item">
+                        <i class="fa fa-twitter"></i>
+                    </a>
+                </li>
+                {{ end }}
+                <li>
+                    <a class="button-square" href="{{ .Site.BaseURL }}index.xml">
+                        <i class="fa fa-rss"></i>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>

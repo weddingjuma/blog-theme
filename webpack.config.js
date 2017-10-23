@@ -1,35 +1,22 @@
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const path = require('path');
+'use strict';
 
-const extractSass = new ExtractTextPlugin({
-    filename: "[name].css",
-    disable: process.env.NODE_ENV === "development"
-});
+const path = require('path');
+let webpack = require('webpack');
 
 module.exports = {
-    entry: "./assets/js/app.js",
+    entry: './src/js/app.js',
     output: {
-        path: path.resolve(__dirname, 'dist'),
-        filename: 'test.bundle.js'
-    },
-    module: {
-        rules: [{
-            test: /\.scss$/,
-            use: extractSass.extract({
-                use: [{
-                    loader: "css-loader"
-                },
-                {
-                    loader: "sass-loader",
-                    options; {
-                        include
-                    }
-                }],
-                fallback: "style-loader"
-            })
-        }]
+        path: path.resolve(__dirname, 'static/js'),
+        filename: 'bundle.js'
     },
     plugins: [
-        extractSass
+        new webpack.ProvidePlugin({
+            $: 'jquery',
+            jQuery: 'jquery', 'window.jQuery': 'jquery',
+            Popper: ['popper.js', 'default'],
+            // In case you imported plugins individually, you must also require them here:
+            Util: "exports-loader?Util!bootstrap/js/dist/util",
+            Dropdown: "exports-loader?Dropdown!bootstrap/js/dist/dropdown",
+        })
     ]
-}
+};

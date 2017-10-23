@@ -1,11 +1,17 @@
 {{ partial "header.html" . }}
 
-<main id="post-index" class="body" itemscope="" itemtype="https://schema.org/Blog">
-    <div class="row">
-        <div class="col-xs-12 col-sm-12 col-md-8">
-            <ol class="post-list">
+{{ partial "navigation.html" . }}
+
+<div class="home-jumbo">
+    <img src="{{ .Site.BaseURL }}/img/homepage-logo.png" alt="">
+</div>
+
+<main id="post-index" class="body index-list" itemscope="" itemtype="https://schema.org/Blog">
+    <div class="row justify-content-center">
+        <div class="col-xs-12 col-sm-12 col-md-8 offset-md-2">
+            <ul class="post-list list-unstyled">
                 {{ $pag := .Paginate (where .Data.Pages "Type" "post") }}{{ range $pag.Pages }} {{ partial "post-stub.html" . }} {{ end }}
-            </ol>
+            </ul>
             
             <div class="post-navigation">
                 {{ partial "pagination.html" . }}

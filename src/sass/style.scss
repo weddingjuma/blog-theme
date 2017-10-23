@@ -5,39 +5,12 @@
 @import "imports";
 @import url('https://fonts.googleapis.com/css?family=Oswald:200,300,400,700');
 
-.inline {
-    display: inline;
-}
-
-.site-header {
-    @extend .container-fluid;
-    background-color: $blue;
-    color: $white;
-    margin-bottom: 35px;
-
-    .container {
-        padding-top: 35px;
-
-        nav {
-            // @extend .col-xs-12;
-
-            ul {
-                @extend .nav;
-
-                a.nav-link, a.nav-link:visited, a.nav-link:focus {
-                    color: $white;
-                }
-            }
-        }
-    }
-}
 
 nav.main-header {
     @extend .navbar;
     @extend .navbar-expand-lg;
     @extend .navbar-dark;
     @extend .fixed-top;
-    // @extend .bg-primary;
 
     background-color: rgba(theme-color("primary"), 0.90);
 
@@ -58,7 +31,7 @@ nav.main-header {
 
                     a {
                         @extend .nav-link;
-                        color: $white;
+                        color: $white !important;
                     }
                 }
             }
@@ -66,14 +39,31 @@ nav.main-header {
     }
 }
 
-main.body {
-    @extend .container;
+.home-jumbo {
+    @extend .container-fluid;
+    padding-top: 99px;
+    padding-bottom: 40px;
+    background-color: theme-color('primary');
 
-    margin-top: 140px !important;
+    img {
+        @extend .mx-auto;
+        @extend .d-block;
+        @extend .img-fluid;
+    }
+}
+
+main.body {
+    @extend .container-fluid;
+
+    margin-top: 93px !important;
 
     .post-list {
         @extend .list-unstyled;
     }
+}
+
+.index-list {
+    @extend .pt-1;
 }
 
 .post-stub {
@@ -113,8 +103,6 @@ footer.site {
     }
 
     a {
-        color: $gray-700;
-
         &:hover {
             color: $red;
             text-decoration: none;
@@ -126,101 +114,15 @@ footer.site {
     }
 }
 
-.features {
-
-    .card-holder {
-        @include make-col-ready();
-
-        @include media-breakpoint-down(sm) {
-            @include make-col(12);
-        }
-        @include media-breakpoint-only(md) {
-            @include make-col(6);
-        }
-        @include media-breakpoint-only(lg) {
-            @include make-col(4);
-        }
-        @include media-breakpoint-up(xl) {
-            @include make-col(3);
-        }
-
-        @include media-breakpoint-down(md) {
-            .card-title {
-                font-size: 1.5rem;
-            }
-        }
-
-        @include transition(all 0.25s);
-        background-color: transparent;
-
-        &:hover {
-            @include transition(all 0.25s);
-            background-color: $gray-300;
-        }
-
-        .card {
-            @extend .m-4;
-
-            border: none;
-            background: none;
-
-            .card-title {
-                @extend .text-center;
-            }
-
-            img {
-                width: 64px;
-                display: flex;
-                align-content: center;
-                margin: 0 auto;
-            }
-
-        }
-    }
-}
-
-.deploy {
-    img {
-        height: 64px;
-        width: 64px;
-    }
-}
-
 footer.site {
     a {
         color: color("primary");
     }
 }
 
-// Parallax
-.parallax-container {
-    position: relative;
-    overflow: hidden;
-    height: 450px;
-
-    .parallax {
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        z-index: -1;
-
-        img {
-            display: none;
-            position: absolute;
-            left: 50%;
-            bottom: 0;
-            min-width: 100%;
-            min-height: 100%;
-            transform: translate3d(0,0,0);
-            transform: translateX(-50%);
-        }
-    }
-}
-
-.btn-xl {
-    @include button-size($input-btn-padding-y-xl, $input-btn-padding-x-xl, $font-size-xl, $line-height-xl, $btn-border-radius-lg);
+h1, h2, h3,
+h4, h5, h6 {
+    font-family: Aleo, 'Times New Roman', Times, serif;
 }
 
 @include media-breakpoint-down(lg) {
@@ -233,4 +135,131 @@ footer.site {
     .display-4 {
         font-size: 1.5rem;
     }
+}
+
+a {
+    color: $link-color;
+}
+
+.post-stub {
+    h5 {
+        a {
+            color: $link-color;
+            font-weight: 300;
+        }
+    }
+
+    .post-stub-date, .reading-time {
+        font-size: $font-size-sm;
+    }
+    
+}
+
+.post-header {
+    @include center-column();
+    @extend .text-center;
+    @extend .my-5;
+}
+
+.center-row {
+    @include make-row();
+    @extend .justify-content-center;
+}
+
+.cover {
+    @extend .align-items-center;
+
+    @include media-breakpoint-down(md) {
+        margin-bottom: 0 !important;
+    }
+
+    @include media-breakpoint-up(md) {
+        height: 525px;
+    }
+    @extend .mb-5;
+    
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    color: $white;
+    position: relative;
+
+    header.post-header {
+        @include center-column();
+        @extend .justify-content-start;
+        @extend .align-middle;
+        z-index: 2;
+
+        h1 {
+            @include media-breakpoint-down(md) {
+                padding: .75rem .5rem !important;
+            }
+            @extend .p-5;
+            @extend .d-block;
+            text-align: left;
+            background: rgba(theme-color-level("primary", 5), 0.75);
+        }
+    }
+
+    & &__image{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 525px;
+        overflow: hidden;
+
+        img {
+            width: 100%;
+        }
+    }
+}
+
+img.featured {
+    @extend .img-fluid;
+}
+
+.post-content {
+    @include center-column();
+
+    font-size: 18px;
+
+    img {
+        @extend .img-fluid;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+        @extend .pt-3;
+        @extend .mb-3;
+        font-weight: 300;
+        color: #000;
+        
+        &::after {
+            background-color: $red;
+            bottom: 0;
+            text-align: left;
+            content: '';
+            display: block;
+            height: 4px;
+            left: 0;
+            top: 5px;
+            position: relative;
+            width: 70px;
+        }
+    }
+
+    a {
+        text-decoration: underline;
+    }
+
+    h2 { font-size: 2rem; }
+    h3 { font-size: 1.8rem; }
+    h4 { font-size: 1.6rem; }
+    h5 { font-size: 1.4rem; }
+    h6 { font-size: 1.2rem; }
+}
+
+.post-footer {
+    @extend .col-6;
+    @extend .mb-5;
 }

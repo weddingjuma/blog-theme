@@ -1,19 +1,13 @@
 {{ partial "header.html" . }}
 
-<main class="body">
-    <div class="row">
-        <article class="post-container">
-            {{ partial "page-header.html" . }}
-            {{ partial "page-content.html" . }}
-            {{ partial "post-footer.html" . }}
-        </article>
-        <section class="sidebar">
-            <aside>
-                {{ partial "terms.html" . }}
-            </aside>
-        </section>
-    </div>
-    
+{{ partial "navigation.html" . }}
+
+<main class="body single-post">
+    <article class="justify-content-center">
+        {{ partial "page-header.html" . }}
+        {{ partial "page-content.html" . }}
+        {{ partial "post-footer.html" . }}
+    </article>
 </main>
 
 {{ partial "footer.html" . }}
